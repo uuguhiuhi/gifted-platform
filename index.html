@@ -1,2 +1,358 @@
-# gifted-platform
- منصة الموهبين مدرسة عذفاء
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102f50">
+<meta name="description" content="منصة إثرائية تفاعلية لطلاب الموهوبين في مجمع عدي بن حاتم الطائي بعذفاء، لتنمية المهارات الرقمية والعلمية والإبداعية والشخصية.">
+<meta name="color-scheme" content="light">
+<title>منصة الموهوبين | مجمع عدي بن حاتم الطائي بعذفاء</title>
+<style>
+:root{--navy:#102f50;--blue:#1e5b87;--teal:#326d70;--gold:#b89a5b;--ink:#20354a;--muted:#617386;--line:#dbe5ed;--bg:#f5f7f9;--white:#fff;--green:#24734e;--red:#b33b35}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.75}
+a{color:inherit}button,input{font:inherit}button,a{touch-action:manipulation}.wrap{max-width:1160px;margin:auto;padding:16px}
+.topline{height:6px;background:linear-gradient(90deg,var(--gold),var(--teal),var(--blue),var(--gold))}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#142f4a,#234b68 65%,#326d70);color:#fff;border-radius:24px;padding:28px 24px;margin-top:12px;box-shadow:0 12px 32px #102f501c}
+.hero:after{content:"✦";position:absolute;left:7%;top:6%;font-size:82px;color:#ffffff12}.hero:before{content:"✧";position:absolute;left:18%;bottom:-38px;font-size:140px;color:#ffffff10}
+.school{font-weight:bold;color:#e9d39b;font-size:clamp(13px,2vw,17px)}.hero h1{font-size:clamp(29px,5vw,48px);line-height:1.25;margin:9px 0 4px;letter-spacing:-.5px}.hero h2{font-size:clamp(18px,3vw,25px);margin:0;color:#d5f0ed;font-weight:500}.hero p{margin:10px 0 0;max-width:690px;color:#e8f0f6}.hero-bottom{display:flex;justify-content:space-between;gap:12px;align-items:end;flex-wrap:wrap;margin-top:18px}.counselor{border:1px solid #ffffff3b;border-radius:12px;padding:8px 12px;background:#ffffff0d;font-size:13px}.seal{border:1px solid #e9d39b;color:#f6e6bb;padding:7px 12px;border-radius:999px;font-size:12px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.nav a{flex:1 1 auto;text-decoration:none;text-align:center;background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:11px;padding:9px 12px;font-weight:bold;font-size:14px}.nav a:hover{border-color:var(--teal);background:#effaf8;transform:translateY(-1px)}
+.nav a{transition:background .18s,border-color .18s,transform .18s}
+.stat{transition:transform .18s,box-shadow .18s}.stat:hover{transform:translateY(-2px);box-shadow:0 8px 18px #102f5010}
+.card{transition:transform .18s,border-color .18s,box-shadow .18s}.card:hover{transform:translateY(-3px);border-color:#b8d0dc;box-shadow:0 10px 24px #102f5012}
+.icon{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:#edf5f7;color:var(--teal);font-weight:bold}
+.choice:disabled{cursor:default;opacity:.92}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.achievement-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid #d8e4ea;background:#f8fafc;color:#607386;font-size:12px}
+.achievement-badge.unlocked{background:#fff8e8;border-color:#e7d4a2;color:#785f25;font-weight:bold}
+.mission-card{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:linear-gradient(120deg,#f1f7fa,#f4faf7);border:1px solid #d9e8e7;border-radius:15px;padding:15px;margin:12px 0}
+.mission-symbol{font-size:30px;background:#fff;border:1px solid var(--line);border-radius:13px;width:54px;height:54px;display:grid;place-items:center}
+.mission-card h3{margin:0;color:var(--navy);font-size:17px}.mission-card p{margin:3px 0;color:var(--muted);font-size:13px}
+.certificate{display:none;border:2px solid #b89a5b;border-radius:16px;padding:24px;text-align:center;margin-top:14px;background:#fffdf7}
+.certificate.show{display:block}.certificate .cert-mark{font-size:30px;color:#b89a5b}.certificate h3{font-size:25px;color:var(--navy);margin:4px}.certificate p{margin:6px 0}.certificate .cert-name{font-size:22px;color:#246a68;font-weight:bold;border-bottom:1px solid #d7c48e;display:inline-block;min-width:200px;padding:4px 18px}
+.input-row{display:grid;grid-template-columns:2fr 1fr;gap:10px;margin:10px 0}.input-row label{display:block;font-size:13px;font-weight:bold;color:var(--navy);margin-bottom:4px}.input-row input{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;background:#fbfdff;color:var(--ink)}
+@media print{body{background:#fff}.topline,.hero,.nav,.stats,.audience,#programs,#challenge,#challengeBank,#tracker,#resources,.print-hide,footer{display:none!important}.wrap{max-width:none;padding:0}.certificate{display:block!important;border:3px double #b89a5b;margin:12mm;padding:18mm;page-break-inside:avoid}.certificate h3{font-size:28px}}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.stat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px;text-align:center}.stat strong{display:block;font-size:23px;color:var(--navy)}.stat span{font-size:12px;color:var(--muted)}
+.section-head{margin:24px 0 12px}.section-head h2{font-size:25px;color:var(--navy);margin:0}.section-head p{margin:3px 0;color:var(--muted);font-size:14px}
+.audience{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin:18px 0}.audience h2{font-size:20px;margin:0 0 10px;color:var(--navy)}.age-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.age{border:1px solid var(--line);border-radius:13px;padding:12px;text-align:right;background:#fbfdff;cursor:pointer;color:var(--ink)}.age strong{display:block;color:var(--navy)}.age small{color:var(--muted);font-size:12px}.age.active{background:#edf3f5;border:2px solid var(--teal);padding:11px}
+.filters{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.filter{border:1px solid var(--line);background:#fff;color:var(--navy);padding:8px 13px;border-radius:999px;cursor:pointer;font-size:13px}.filter.active,.filter:hover{background:var(--navy);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:15px;display:flex;flex-direction:column;min-width:0;box-shadow:0 4px 14px #102f5008}.card .icon{font-size:28px}.tag{display:inline-block;align-self:flex-start;background:#edf5fa;color:#235878;border-radius:7px;padding:2px 8px;font-size:11px;margin:5px 0}.card h3{font-size:18px;margin:3px 0;color:var(--navy)}.card p{margin:3px 0 9px;color:#53677a;font-size:13px;flex:1}.taskhint{padding:8px 10px;background:#f5f8fb;border-radius:9px;font-size:12px;color:#354e63;margin-bottom:9px}.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;border:0;cursor:pointer;border-radius:10px;padding:9px 11px;background:var(--navy);color:#fff;text-decoration:none;text-align:center;font-weight:bold;font-size:12px}.btn.secondary{background:#eef4f8;color:var(--navy);border:1px solid #d5e2ec}.btn.video{background:#315b78}
+.yt-mark{display:inline-grid;place-items:center;width:21px;height:15px;border-radius:5px;background:#e62117;color:#fff;font-size:9px;line-height:1;flex-shrink:0}
+.btn.video:hover .yt-mark{background:#c71910}
+.card .actions .btn.video{gap:7px}
+.btn:hover{filter:brightness(.95)}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #e5b84d;outline-offset:2px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:18px}.panel h2{margin:0 0 5px;color:var(--navy);font-size:23px}.panel>p{margin:4px 0 12px;color:var(--muted);font-size:14px}.challenge{background:linear-gradient(130deg,#fff,#f0f8f8)}.challengebox{border:1px solid #d8e7e8;border-radius:14px;padding:15px;background:#fff;margin-top:10px}.qnum{color:var(--teal);font-size:12px;font-weight:bold}.question{font-size:17px;font-weight:bold;color:var(--navy);margin:5px 0 12px}.choices{display:grid;gap:8px}.choice{border:1px solid var(--line);background:#f8fafc;border-radius:11px;padding:11px 12px;text-align:right;cursor:pointer;color:var(--ink)}.choice:hover{background:#edf6fb}.choice.correct{border:2px solid #298258;background:#e8f7ee}.choice.incorrect{border:2px solid #bf6446;background:#fff0e9}.feedback{display:none;margin-top:12px;padding:12px;border-radius:11px;font-size:14px}.feedback.show{display:block}.feedback.good{background:#e8f7ee;border:1px solid #b7e0c7;color:#1d6845}.feedback.try{background:#fff2e9;border:1px solid #edc6ae;color:#8b4229}.challengefoot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.resource{background:#fbfdff;border:1px solid var(--line);border-radius:13px;padding:12px}.resource strong{display:block;color:var(--navy);margin-bottom:3px}.resource p{margin:0 0 7px;font-size:12px;color:var(--muted)}.resource a{color:#1b638d;font-size:13px;font-weight:bold;overflow-wrap:anywhere}
+.task-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.task{background:#fbfdff;border:1px solid var(--line);border-radius:11px;padding:10px;display:flex;gap:9px;align-items:flex-start}.task input{margin-top:8px;accent-color:var(--teal);width:17px;height:17px;flex-shrink:0}.task label{font-size:13px}.progress-wrap{height:10px;border-radius:999px;background:#e7edf2;overflow:hidden}.progress{height:100%;width:0;background:linear-gradient(90deg,var(--teal),#51a887);transition:width .25s}.notice{background:#fff8e9;border:1px solid #efe0b6;padding:11px 13px;border-radius:12px;font-size:12px;color:#68552c;margin-top:12px}.hidden{display:none!important}.muted{color:var(--muted);font-size:12px}
+footer{margin:20px 0 4px;background:#102f50;color:#fff;border-radius:18px;padding:20px;text-align:center}footer strong{display:block;font-size:18px}footer span{display:block;color:#d7e5ef;font-size:13px}footer .gold{color:#ead39c;margin-top:6px}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.resource-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.wrap{padding:10px}.hero{padding:21px 15px;border-radius:18px}.hero-bottom{align-items:start}.nav a{font-size:12px;padding:8px 6px}.grid,.resource-grid{grid-template-columns:1fr}.age-options{grid-template-columns:1fr}.age{display:flex;align-items:center;justify-content:space-between;gap:8px}.age small{text-align:left}.stats{gap:6px}.stat{padding:9px 3px}.stat strong{font-size:19px}.section-head h2{font-size:22px}.panel{padding:13px}.task-list{grid-template-columns:1fr}.card{padding:14px}}
+
+/* Formal challenge bank */
+#challengeBankBox{margin-top:8px}
+#bankChoices .choice{font-size:14px}
+#bankNext{background:#234b68}
+#challengeBank .filter.active{background:#234b68}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style></head>
+<body><div class="topline"></div><main class="wrap">
+<header class="hero" id="home">
+<div class="school">مجمع عدي بن حاتم الطائي بعذفاء</div>
+<h1>منصة الموهوبين</h1><h2>البرنامج الإثرائي وتنمية المهارات</h2>
+<p>مساحة تعليمية تفاعلية لاكتشاف القدرات، وتطوير المهارات، وتحويل الأفكار إلى إنجازات.</p>
+<div class="hero-bottom"><div class="counselor">إعداد وإشراف: الموجه الطلابي <b>عبدالله عبدالرحمن الشمري</b></div><div class="seal">تعلم • جرّب • ابتكر • تميّز</div></div>
+</header>
+<nav class="nav" aria-label="التنقل الرئيسي"><a href="#programs">✦ البرامج الإثرائية</a><a href="#challengeBank">◎ بنك التحديات</a><a href="#mission">⚑ مهمة اليوم</a><a href="#certificate">♛ شهادة الإنجاز</a><a href="#tracker">✓ سجل الإنجاز</a><a href="#resources">↗ مصادر التعلم</a></nav>
+<div class="stats"><div class="stat"><strong id="doneCount">0</strong><span>مهام تعليمية مكتملة</span></div><div class="stat"><strong id="points">0</strong><span>نقاط التميّز</span></div><div class="stat"><strong id="progressPct">0%</strong><span>نسبة الإنجاز</span></div></div>
+
+<section class="audience" aria-labelledby="ageTitle"><h2 id="ageTitle">اختر المرحلة المناسبة لك</h2><div class="age-options">
+<button class="age active" type="button" data-age="all"><strong>جميع المراحل</strong><small>عرض كل البرامج</small></button>
+<button class="age" type="button" data-age="young"><strong>المرحلة الابتدائية</strong><small>أنشطة مبسطة واكتشاف المواهب</small></button>
+<button class="age" type="button" data-age="middle"><strong>المرحلة المتوسطة</strong><small>تجربة مهارات ومشاريع قصيرة</small></button>
+<button class="age" type="button" data-age="high"><strong>المرحلة الثانوية</strong><small>مشاريع متقدمة واستعداد للمستقبل</small></button>
+</div><p class="muted" id="ageHint">يمكن لكل طالب اختيار النشاط المناسب لمستواه، وليس لعمره فقط.</p></section>
+
+<section id="programs"><div class="section-head"><h2>البرامج الإثرائية</h2><p>كل برنامج يتضمن هدفًا واضحًا ومهمة عملية ورابطًا لبحث تعليمي على يوتيوب. اختر المحتوى المناسب لمرحلتك، وتحقق من جودة المصدر.</p></div>
+<div class="filters" id="filters"><button type="button" class="filter active" data-filter="all">كل المجالات</button><button type="button" class="filter" data-filter="tech">التقنية</button><button type="button" class="filter" data-filter="language">اللغات</button><button type="button" class="filter" data-filter="stem">العلوم والبرمجة</button><button type="button" class="filter" data-filter="creative">الإبداع</button><button type="button" class="filter" data-filter="life">المهارات الشخصية</button><button type="button" class="filter" data-filter="tests">القياس ونافس</button></div>
+<div class="grid" id="programGrid">
+<article class="card" data-cat="tech" data-age="all middle high"><div class="icon">▦</div><span class="tag">المهارات التقنية</span><h3>Microsoft Excel</h3><p>تنظيم البيانات، واستخدام المعادلات، وتحويل الأرقام إلى رسوم بيانية مفهومة.</p><div class="taskhint"><b>مهمتك:</b> أنشئ جدول متابعة للقراءة أو الإنجازات.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=شرح+Excel+للمبتدئين+بالعربي"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="excel">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="tech" data-age="all young middle high"><div class="icon">▤</div><span class="tag">الكتابة الرقمية</span><h3>Microsoft Word</h3><p>تنسيق النصوص، وكتابة التقارير، وإعداد مستند واضح ومنظم.</p><div class="taskhint"><b>مهمتك:</b> اكتب صفحة عن موهبتك وكيف تطورها.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=شرح+Word+للمبتدئين+بالعربي"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="word">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="tech" data-age="all young middle high"><div class="icon">▣</div><span class="tag">العروض والتواصل</span><h3>PowerPoint</h3><p>بناء عرض جذاب، واختيار الصور المناسبة، وتلخيص الأفكار بوضوح.</p><div class="taskhint"><b>مهمتك:</b> صمّم عرضًا من 3 إلى 5 شرائح عن فكرة تحبها.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=شرح+PowerPoint+للمبتدئين+بالعربي"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="ppt">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="tech creative" data-age="all young middle high"><div class="icon">◈</div><span class="tag">التصميم الرقمي</span><h3>Canva</h3><p>تصميم ملصقات تعليمية وإنفوجرافيك وبطاقات عرض للأفكار.</p><div class="taskhint"><b>مهمتك:</b> صمّم ملصقًا عن قيمة أو سلوك إيجابي.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=شرح+Canva+للمبتدئين+بالعربي"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="canva">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="tech" data-age="middle high"><div class="icon">▧</div><span class="tag">تنظيم التعلم</span><h3>OneNote والخرائط الذهنية</h3><p>تنظيم الملاحظات، وتلخيص الدروس، وربط المفاهيم ببعضها.</p><div class="taskhint"><b>مهمتك:</b> أنشئ خريطة ذهنية لموضوع دراسي.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=شرح+OneNote+والخرائط+الذهنية+بالعربي"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="notes">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="language life" data-age="all young middle high"><div class="icon">◎</div><span class="tag">اللغات</span><h3>اللغة الإنجليزية</h3><p>تطوير المفردات والنطق والمحادثة والثقة في استخدام لغة جديدة.</p><div class="taskhint"><b>مهمتك:</b> قدّم نفسك بالإنجليزية في 30 ثانية، وفق مستواك.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=محادثات+إنجليزية+للمبتدئين+مع+الترجمة"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="english">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="stem" data-age="young middle"><div class="icon">▥</div><span class="tag">البرمجة للمبتدئين</span><h3>Scratch</h3><p>اصنع قصة أو لعبة بسيطة باستخدام كتل برمجية مرئية.</p><div class="taskhint"><b>مهمتك:</b> حرّك شخصية على الشاشة واجعلها تقول عبارة.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=شرح+Scratch+للأطفال+بالعربي"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="scratch">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="stem" data-age="middle high"><div class="icon">⌘</div><span class="tag">البرمجة</span><h3>Python</h3><p>التعرف على المتغيرات والشروط والأوامر وبناء برامج بسيطة.</p><div class="taskhint"><b>مهمتك:</b> اكتب برنامجًا يجمع عددين أو يحسب المتوسط.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=Python+للمبتدئين+بالعربي"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="python">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="stem" data-age="all middle high"><div class="icon">◉</div><span class="tag">التقنيات الحديثة</span><h3>الذكاء الاصطناعي</h3><p>فهم الاستخدامات، وكتابة طلبات واضحة، والتحقق من النتائج وحماية الخصوصية.</p><div class="taskhint"><b>مهمتك:</b> اقترح فكرة مشروع واستعن بأداة تعليمية لتطويرها ثم تحقّق من المعلومات.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=الذكاء+الاصطناعي+للطلاب+شرح+مبسط+بالعربي"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="ai">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="stem" data-age="all young middle high"><div class="icon">⚗</div><span class="tag">العلوم والاستكشاف</span><h3>التجارب العلمية</h3><p>تعلّم الملاحظة، وصياغة الفرضية، وتسجيل النتائج، والتفسير العلمي.</p><div class="taskhint"><b>مهمتك:</b> دوّن سؤالًا علميًا وفرضية ونتيجة تجربة آمنة بإشراف مناسب.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=تجارب+علمية+سهلة+وآمنة+للطلاب"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="science">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="creative" data-age="all young middle high"><div class="icon">✦</div><span class="tag">التفكير والابتكار</span><h3>التفكير الإبداعي وحل المشكلات</h3><p>توليد بدائل متنوعة، ومقارنة الحلول، واختيار الحل المناسب.</p><div class="taskhint"><b>مهمتك:</b> اقترح ثلاثة حلول لمشكلة في المدرسة واختر الأفضل مع السبب.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=التفكير+الإبداعي+وحل+المشكلات+للطلاب"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="creative">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="life" data-age="middle high"><div class="icon">▤</div><span class="tag">الاستعداد للمستقبل</span><h3>اجتياز المقابلة الشخصية</h3><p>الاستعداد للمقابلة، والإجابة المنظمة، والتعريف بالمهارات والإنجازات.</p><div class="taskhint"><b>مهمتك:</b> أجب عن «حدّثني عن نفسك» في دقيقة واحدة.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=مهارات+اجتياز+المقابلة+الشخصية+للطلاب"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="interview">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="life" data-age="all young middle high"><div class="icon">◌</div><span class="tag">التواصل الفعّال</span><h3>لغة الجسد</h3><p>التواصل البصري الملائم، والوقفة المريحة، والإشارات الطبيعية واحترام الآخرين.</p><div class="taskhint"><b>مهمتك:</b> قدّم فكرة لدقيقة مع صوت واضح ووقفة مريحة.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=لغة+الجسد+والتواصل+غير+اللفظي+للطلبة"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="body">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="life" data-age="all young middle high"><div class="icon">◍</div><span class="tag">الثقة بالنفس</span><h3>الإلقاء والعرض</h3><p>ترتيب الأفكار، وبناء مقدمة واضحة، واستخدام نبرة صوت مناسبة.</p><div class="taskhint"><b>مهمتك:</b> سجّل عرضًا قصيرًا عن هواية أو فكرة تحبها.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=مهارات+الإلقاء+والتحدث+أمام+الجمهور+للطلاب"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="speaking">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="life" data-age="middle high"><div class="icon">◷</div><span class="tag">إدارة الذات</span><h3>إدارة الوقت وتحديد الأهداف</h3><p>تقسيم الهدف إلى خطوات صغيرة، وتحديد الأولويات، ومتابعة التقدم.</p><div class="taskhint"><b>مهمتك:</b> اكتب خطة أسبوعية لتعلّم مهارة جديدة.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=إدارة+الوقت+وتحديد+الأهداف+للطلبة"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="time">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="life creative" data-age="all middle high"><div class="icon">⌕</div><span class="tag">البحث والتفكير الناقد</span><h3>التحقق من المعلومات</h3><p>مقارنة المصادر، وفحص تاريخ النشر، وتمييز الرأي عن الحقيقة.</p><div class="taskhint"><b>مهمتك:</b> تحقق من معلومة عبر مصدرين موثوقين.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=مهارات+البحث+والتحقق+من+المعلومات+للطلاب"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="research">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="life" data-age="middle high"><div class="icon">◇</div><span class="tag">القيادة والعمل الجماعي</span><h3>التعاون وحل الخلافات</h3><p>الاستماع الفعّال، واحترام الرأي الآخر، وتقاسم الأدوار للوصول إلى حل.</p><div class="taskhint"><b>مهمتك:</b> اقترح قواعد لفريق يعمل على مشروع مشترك.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=مهارات+العمل+الجماعي+وحل+الخلافات+للطلاب"><span class="yt-mark" aria-hidden="true">▶</span> دروس يوتيوب</a><button type="button" class="btn secondary complete" data-id="team">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="tests" data-age="high"><div class="icon">◈</div><span class="tag">الاختبارات المعيارية</span><h3>الاستعداد لاختبار القدرات العامة</h3><p>التعرّف على القسمين اللفظي والكمي، وفهم طبيعة الأسئلة، والتدرب على إدارة الوقت واستراتيجيات الحل.</p><div class="taskhint"><b>مهمتك:</b> خصص وقتًا يوميًا لتدريب كمي ولفظي، وسجّل أخطاءك وسبب كل خطأ.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=شرح+اختبار+القدرات+العامة+كمي+لفظي+استراتيجيات+الحل+السعودية"><span class="yt-mark" aria-hidden="true">▶</span> دروس القدرات على يوتيوب</a><button type="button" class="btn secondary complete" data-id="qudrat">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="tests" data-age="high"><div class="icon">▤</div><span class="tag">الاستعداد الجامعي</span><h3>الاستعداد للاختبار التحصيلي</h3><p>تنظيم مراجعة المفاهيم في المواد العلمية، والتدرب على الأسئلة، وتحليل الأخطاء، وبناء خطة مراجعة واقعية.</p><div class="taskhint"><b>مهمتك:</b> أنشئ جدول مراجعة أسبوعيًا، واجعل لكل جلسة هدفًا محددًا وأسئلة تدريبية.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=شرح+الاختبار+التحصيلي+السعودية+خطة+مذاكرة+حل+أسئلة"><span class="yt-mark" aria-hidden="true">▶</span> دروس التحصيلي على يوتيوب</a><button type="button" class="btn secondary complete" data-id="tahsili">تسجيل الإنجاز</button></div></article>
+<article class="card" data-cat="tests" data-age="young middle"><div class="icon">◎</div><span class="tag">الاختبارات الوطنية</span><h3>الاستعداد لاختبارات نافس</h3><p>تقوية مهارات القراءة والفهم والاستدلال، والرياضيات والعلوم بحسب الصف المستهدف، من خلال تدريب هادئ ومنتظم.</p><div class="taskhint"><b>مهمتك:</b> اقرأ نصًا قصيرًا وأجب عن أسئلة الفهم، ثم حل مسائل متنوعة وراجع طريقة الحل.</div><div class="actions"><a class="btn video" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=اختبارات+نافس+تدريبات+قراءة+رياضيات+علوم+السعودية"><span class="yt-mark" aria-hidden="true">▶</span> تدريبات نافس على يوتيوب</a><button type="button" class="btn secondary complete" data-id="nafs">تسجيل الإنجاز</button></div></article>
+</div></section>
+
+<section class="panel challenge" id="challenge"><h2>تحدّيات تفاعلية لتنمية المهارات</h2><p>اختر الإجابة الأنسب، وستظهر لك تغذية راجعة مباشرة تساعدك على التعلم.</p>
+<div class="challengebox"><div class="qnum">السؤال ١ من ١</div><div class="question">طُلب منك في مقابلة مدرسية أن تعرّف بنفسك. ما أفضل بداية؟</div>
+<div class="choices" id="quizChoices">
+<button type="button" class="choice" data-correct="false" data-feedback="حاول مرة أخرى. الأفضل أن تكون إجابتك مختصرة ومنظمة، وتذكر معلومات مرتبطة بالسؤال.">أ) أتحدث طويلًا عن كل تفاصيل حياتي.</button>
+<button type="button" class="choice" data-correct="true" data-feedback="أحسنت! إجابة مناسبة. اذكر اسمك واهتمامًا أو مهارة وإنجازًا ذا صلة، بإيجاز ووضوح. تدرب على ذلك بصوت هادئ.">ب) أعرّف بنفسي باختصار وأذكر اهتمامًا أو إنجازًا مناسبًا.</button>
+<button type="button" class="choice" data-correct="false" data-feedback="لا بأس بالشعور بالتوتر. خذ نفسًا هادئًا، وابدأ بجملة بسيطة، ثم أضف معلومة أو مهارة واحدة.">ج) ألتزم الصمت لأنني أشعر بالتوتر.</button>
+</div><div class="feedback" id="quizFeedback" role="status" aria-live="polite"></div><div class="challengefoot"><span class="muted" id="quizStatus">اختر إجابة واحدة للبدء.</span><button type="button" class="btn secondary" id="tryAgain">إعادة المحاولة</button></div></div>
+</section>
+
+
+<section class="panel" id="challengeBank">
+<h2>بنك التحديات التفاعلية</h2>
+<p>اختر مجالًا، ثم أجب عن التحدي. ستظهر الإجابة الصحيحة مع تفسير فوري، وستُضاف النقاط عند الإجابة الصحيحة.</p>
+<div class="filters" id="challengeFilters">
+<button type="button" class="filter active" data-qfilter="all">كل التحديات</button>
+<button type="button" class="filter" data-qfilter="digital">المهارات الرقمية</button>
+<button type="button" class="filter" data-qfilter="thinking">التفكير والعلوم</button>
+<button type="button" class="filter" data-qfilter="communication">التواصل والقيادة</button>
+</div>
+<div class="challengebox" id="challengeBankBox">
+<div class="qnum" id="bankCounter">التحدي 1 من 10</div>
+<div class="question" id="bankQuestion">ما أفضل طريقة لحماية حسابك الرقمي؟</div>
+<div class="choices" id="bankChoices"></div>
+<div class="feedback" id="bankFeedback" role="status" aria-live="polite"></div>
+<div class="challengefoot">
+<span class="muted" id="bankStatus">اختر إجابة واحدة.</span>
+<div class="actions">
+<button type="button" class="btn secondary" id="bankReset">إعادة المحاولة</button>
+<button type="button" class="btn" id="bankNext">التحدي التالي ←</button>
+</div>
+</div>
+</div>
+<div class="notice">تُحتسب نقاط كل تحدٍّ مرة واحدة فقط عند الإجابة الصحيحة. يمكنك المحاولة مجددًا، وستظهر لك الإجابة الصحيحة وتفسيرها بعد كل اختيار.</div>
+</section>
+
+<section class="panel" id="mission">
+<h2>⚑ مهمة اليوم</h2>
+<p>تحدٍّ قصير يساعدك على تحويل ما تعلمته إلى تطبيق عملي. يمكنك تبديل المهمة عند إتمامها.</p>
+<div class="mission-card">
+  <div class="mission-symbol" id="missionSymbol" aria-hidden="true">✦</div>
+  <div><h3 id="missionTitle">مصمم المعرفة</h3><p id="missionText">أنشئ بطاقة تعليمية تلخص معلومة جديدة تعلمتها اليوم.</p><span class="tag" id="missionTag">الإبداع والتصميم</span></div>
+</div>
+<div class="actions print-hide">
+  <button type="button" class="btn" id="newMission">⟳ مهمة أخرى</button>
+  <button type="button" class="btn secondary" id="completeMission">✓ أنجزت المهمة</button>
+</div>
+<p class="muted" id="missionStatus" role="status" aria-live="polite">اختر مهمة وابدأ التنفيذ، ثم سجّل إنجازك.</p>
+</section>
+
+<section class="panel" id="certificate">
+<h2>♛ شهادة الإنجاز الشخصية</h2>
+<p>أدخل اسم الطالب والمرحلة، ثم أنشئ شهادة قابلة للطباعة بعد إتمام أنشطتك. الشهادة تحفيزية ولا تمثل اعتمادًا رسميًا.</p>
+<div class="input-row print-hide">
+  <div><label for="studentName">اسم الطالب</label><input id="studentName" type="text" maxlength="70" placeholder="اكتب اسم الطالب هنا"></div>
+  <div><label for="studentStage">المرحلة الدراسية</label><input id="studentStage" type="text" maxlength="40" placeholder="مثال: الابتدائية"></div>
+</div>
+<div class="actions print-hide"><button type="button" class="btn" id="makeCertificate">✦ إنشاء الشهادة</button><button type="button" class="btn secondary" id="printCertificate">⎙ طباعة / حفظ PDF</button></div>
+<div class="certificate" id="certificatePreview" aria-live="polite">
+  <div class="cert-mark">✦ ◈ ✦</div>
+  <div class="school">مجمع عدي بن حاتم الطائي بعذفاء</div>
+  <h3>شهادة إنجاز إثرائي</h3>
+  <p>تُمنح هذه الشهادة للطالب</p>
+  <div class="cert-name" id="certStudentName">اسم الطالب</div>
+  <p id="certStage">المرحلة الدراسية</p>
+  <p>تقديرًا لمشاركته في الأنشطة الإثرائية، وسعيه إلى التعلم والابتكار وتنمية مهاراته.</p>
+  <p><strong>استمر في التعلّم؛ فكل خطوة تصنع فرقًا.</strong></p>
+  <p>الموجه الطلابي: عبدالله عبدالرحمن الشمري</p>
+  <p id="certDate"></p>
+</div>
+<div class="notice print-hide">تُنشأ الشهادة على جهازك داخل المتصفح، ويمكنك طباعتها أو اختيار «حفظ بصيغة PDF» من نافذة الطباعة.</div>
+</section>
+
+<section class="panel" id="tracker"><h2>سجل الإنجاز الشخصي</h2><p>ضع علامة أمام كل مهمة أنجزتها، وتابع تقدمك خطوة بخطوة.</p><div class="progress-wrap"><div class="progress" id="progress"></div></div><p class="muted" id="progressText">أنجزت 0 مهمة</p>
+<div class="task-list" id="taskList">
+<div class="task"><input type="checkbox" id="t1"><label for="t1">أنشأت جدولًا أو رسمًا بيانيًا.</label></div><div class="task"><input type="checkbox" id="t2"><label for="t2">أعددت مستندًا منسقًا.</label></div><div class="task"><input type="checkbox" id="t3"><label for="t3">صممت عرضًا تقديميًا.</label></div><div class="task"><input type="checkbox" id="t4"><label for="t4">أنجزت تصميمًا رقميًا.</label></div><div class="task"><input type="checkbox" id="t5"><label for="t5">تدرّبت على لغة جديدة.</label></div><div class="task"><input type="checkbox" id="t6"><label for="t6">أنشأت مشروعًا برمجيًا أو جربت كودًا.</label></div><div class="task"><input type="checkbox" id="t7"><label for="t7">تعلمت مفهومًا عن الذكاء الاصطناعي.</label></div><div class="task"><input type="checkbox" id="t8"><label for="t8">سجلت ملاحظة علمية.</label></div><div class="task"><input type="checkbox" id="t9"><label for="t9">اقترحت حلولًا لمشكلة.</label></div><div class="task"><input type="checkbox" id="t10"><label for="t10">تدربت على سؤال مقابلة.</label></div><div class="task"><input type="checkbox" id="t11"><label for="t11">قدمت فكرة مع لغة جسد مناسبة.</label></div><div class="task"><input type="checkbox" id="t12"><label for="t12">قدمت عرضًا قصيرًا.</label></div><div class="task"><input type="checkbox" id="t13"><label for="t13">تحققت من معلومة عبر مصدرين.</label></div><div class="task"><input type="checkbox" id="t14"><label for="t14">شاركت في عمل جماعي.</label></div>
+</div><div class="actions" style="margin-top:12px"><button type="button" class="btn secondary" id="resetTasks">إعادة تعيين السجل</button></div><p class="muted">ملاحظة: يُحفظ سجل الإنجاز في المتصفح على الجهاز نفسه عند السماح بالتخزين المحلي.</p></section>
+
+<section class="panel" id="resources"><h2>مصادر تعلم موثوقة للانطلاق</h2><p>روابط مباشرة إلى منصات تعليمية تساعد الطالب على الاستمرار والتوسع في التعلم.</p><div class="resource-grid">
+<div class="resource"><strong>Microsoft Learn</strong><p>مهارات التقنية وأدوات Microsoft.</p><a href="https://learn.microsoft.com/training/" target="_blank" rel="noopener noreferrer">زيارة المنصة ↗</a></div>
+<div class="resource"><strong>BBC Learning English</strong><p>مواد وأنشطة لتعلم الإنجليزية.</p><a href="https://www.bbc.co.uk/learningenglish" target="_blank" rel="noopener noreferrer">زيارة المنصة ↗</a></div>
+<div class="resource"><strong>Code.org</strong><p>أنشطة برمجية للمبتدئين.</p><a href="https://code.org/" target="_blank" rel="noopener noreferrer">زيارة المنصة ↗</a></div>
+<div class="resource"><strong>Khan Academy</strong><p>رياضيات وعلوم ومجالات تعليمية متنوعة.</p><a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">زيارة المنصة ↗</a></div>
+<div class="resource"><strong>Scratch</strong><p>برمجة مرئية لبناء ألعاب وقصص تفاعلية.</p><a href="https://scratch.mit.edu/" target="_blank" rel="noopener noreferrer">زيارة المنصة ↗</a></div>
+<div class="resource"><strong>Canva</strong><p>تصميم عروض وملصقات ومواد تعليمية.</p><a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">زيارة المنصة ↗</a></div>
+</div><div class="notice">إرشاد رقمي: اختر محتوى مناسبًا لعمرك، وراجع المعلومات قبل اعتمادها، ولا تشارك بياناتك الشخصية أو صورك الخاصة على المنصات العامة. روابط يوتيوب تفتح نتائج بحث تعليمية وقد تتضمن محتوى متفاوت الجودة؛ اختر المصادر المناسبة وتحقق من توافقها مع التعليمات الرسمية. قد تتغير مواصفات الاختبارات ومواعيدها، لذا راجع الجهة الرسمية عند التخطيط للاختبار.</div></section>
+<footer><strong>كل موهبة تبدأ بخطوة، وكل إنجاز يبدأ بالمحاولة</strong><span>مجمع عدي بن حاتم الطائي بعذفاء</span><span>الموجه الطلابي: عبدالله عبدالرحمن الشمري</span><span class="gold">تعلم • جرّب • ابتكر • تميّز</span></footer>
+</main>
+<script>
+(function(){
+  var done={}; var quizCorrect=false; var quizAttempts=0;
+  function id(x){return document.getElementById(x);}
+  function updateStats(){
+    var n=Object.keys(done).filter(function(k){return done[k];}).length;
+    id('doneCount').textContent=n;
+    id('points').textContent=n*10+Object.keys(bankAwarded).filter(function(k){return bankAwarded[k];}).length*10+(quizCorrect?5:0);
+    id('progressPct').textContent=Math.round(n/15*100)+'%';
+    document.querySelectorAll('.complete').forEach(function(b){
+      var yes=!!done[b.dataset.id]; b.textContent=yes?'تم تسجيل الإنجاز ✓':'تسجيل الإنجاز'; b.style.background=yes?'#24734e':''; b.style.color=yes?'#fff':'';
+      b.setAttribute('aria-pressed',yes?'true':'false');
+    });
+  }
+
+  var questions = [
+    {cat:'digital',q:'ما أفضل طريقة لحماية حسابك الرقمي؟',a:['استخدام كلمة مرور قوية وفريدة وتفعيل التحقق الإضافي','مشاركة كلمة المرور مع الأصدقاء','استخدام كلمة المرور نفسها في كل المواقع'],correct:0,why:'صحيح. كلمة مرور قوية وفريدة مع التحقق الإضافي تقلل احتمال الوصول غير المصرح به.'},
+    {cat:'digital',q:'أيٌّ من التالي يجعل عرض PowerPoint أكثر وضوحًا؟',a:['كتابة فقرات طويلة في كل شريحة','فكرة رئيسية واحدة مع نص مختصر وصورة مناسبة','استخدام ألوان كثيرة وخطوط متعددة'],correct:1,why:'أحسنت. الفكرة الواحدة والنص المختصر والتصميم المتناسق تسهّل فهم العرض.'},
+    {cat:'digital',q:'ما الاستخدام الأنسب لأداة ذكاء اصطناعي في مشروع مدرسي؟',a:['نسخ كل النتائج دون مراجعة','إدخال بيانات شخصية حساسة','طلب أفكار أولية ثم التحقق من المعلومات وكتابتها بأسلوبك'],correct:2,why:'صحيح. استخدم الأداة للمساعدة، وتحقق من النتائج، واحمِ خصوصيتك واذكر المصادر عند الحاجة.'},
+    {cat:'thinking',q:'وجدت معلومة غريبة على الإنترنت. ما الخطوة الأفضل؟',a:['نشرها فورًا','التحقق منها في أكثر من مصدر موثوق','تصديقها لأنها مكتوبة بثقة'],correct:1,why:'صحيح. قارن المصادر وتاريخ النشر والأدلة قبل اعتماد المعلومة أو مشاركتها.'},
+    {cat:'thinking',q:'ما أول خطوة مفيدة عند حل مشكلة معقدة؟',a:['تحديد المشكلة وفهم أسبابها','اختيار أول حل يخطر في بالك','تجاهل المعلومات غير المريحة'],correct:0,why:'أحسنت. تحديد المشكلة وأسبابها يساعد على اقتراح حلول مناسبة ثم اختبارها.'},
+    {cat:'thinking',q:'في تجربة علمية، لماذا نسجل النتائج؟',a:['لجعل التقرير أطول','لأن النتيجة يجب أن توافق توقعنا','لمقارنة الملاحظات بالأفكار الأولية واستخلاص استنتاج'],correct:2,why:'صحيح. نسجل النتائج كما ظهرت، ثم نقارنها بالفرضية ونستنتج بناءً على الأدلة.'},
+    {cat:'communication',q:'في مقابلة مدرسية، كيف تجيب عن سؤال لا تعرف إجابته؟',a:['تخمين الإجابة بثقة وكأنها مؤكدة','توضح ما تعرفه بأمانة وتبيّن كيف ستبحث عن الإجابة','تنتقد السؤال'],correct:1,why:'إجابة ناضجة. الصدق والهدوء وشرح طريقة الوصول إلى الإجابة أفضل من ادعاء المعرفة.'},
+    {cat:'communication',q:'أي سلوك يدعم التواصل الفعّال أثناء العمل الجماعي؟',a:['مقاطعة الآخرين لإثبات وجهة نظرك','ترك شخص واحد يقوم بكل العمل','الاستماع باحترام وتوزيع الأدوار بوضوح'],correct:2,why:'صحيح. الاستماع واحترام الآراء وتوزيع الأدوار يرفع جودة التعاون.'},
+    {cat:'communication',q:'ما المقصود بلغة جسد مناسبة أثناء تقديم عرض؟',a:['وقفة مريحة وإشارات طبيعية وصوت واضح','الثبات دون أي تعبير طوال الوقت','الإكثار من الحركة دون هدف'],correct:0,why:'أحسنت. لغة الجسد ليست أداءً مصطنعًا؛ الأفضل أن تكون طبيعية ومريحة ومتوافقة مع الكلام.'},
+    {cat:'communication',q:'ما الطريقة الأفضل للتعريف بنفسك في مقابلة؟',a:['ذكر كل تفاصيل حياتك','إجابة مختصرة تذكر الاهتمامات والمهارات ذات الصلة','القول إنك لا تملك أي نقاط قوة'],correct:1,why:'صحيح. قدم نفسك بإيجاز، واذكر مهارة أو اهتمامًا أو إنجازًا ذا صلة بالموقف.'}
+  ];
+  var qFilter='all', qIndex=0, qAnswered={}, bankAwarded={};
+  function filteredQuestions(){return questions.filter(function(q){return qFilter==='all'||q.cat===qFilter;});}
+  function renderQuestion(){
+    var list=filteredQuestions(); if(!list.length)return;
+    if(qIndex>=list.length)qIndex=0;
+    var q=list[qIndex];
+    id('bankCounter').textContent='التحدي '+(qIndex+1)+' من '+list.length;
+    id('bankQuestion').textContent=q.q;
+    id('bankChoices').innerHTML='';
+    q.a.forEach(function(answer,i){
+      var btn=document.createElement('button');
+      btn.type='button'; btn.className='choice';
+      btn.textContent=String.fromCharCode(1571+i)+') '+answer;
+      btn.dataset.answer=String(i);
+      id('bankChoices').appendChild(btn);
+    });
+    id('bankFeedback').textContent='';
+    id('bankFeedback').className='feedback';
+    id('bankStatus').textContent=qAnswered[q.q]?'سبق أن أجبت عن هذا التحدي. يمكنك المحاولة مجددًا للتعلّم.':'اختر إجابة واحدة.';
+  }
+  function handleBankChoice(btn){
+    var list=filteredQuestions(),q=list[qIndex],chosen=Number(btn.dataset.answer),correct=chosen===q.correct;
+    var fb=id('bankFeedback');
+    var correctLetter=String.fromCharCode(1571+q.correct);
+    fb.textContent=correct
+      ? 'أحسنت! إجابة صحيحة. '+q.why
+      : 'ليست الإجابة الصحيحة. الإجابة الصحيحة هي ('+correctLetter+'). '+q.a[q.correct]+'. '+q.why;
+    fb.className='feedback show '+(correct?'good':'try');
+    Array.prototype.forEach.call(id('bankChoices').children,function(b,i){
+      b.classList.remove('correct','incorrect');
+      if(i===q.correct)b.classList.add('correct');
+      else if(i===chosen)b.classList.add('incorrect');
+    });
+    qAnswered[q.q]=true;
+    if(correct&&!bankAwarded[q.q]){
+      bankAwarded[q.q]=true;
+      updateStats();
+      id('bankStatus').textContent='إجابة صحيحة! أُضيفت 10 نقاط إلى رصيدك.';
+    } else if(correct){
+      id('bankStatus').textContent='إجابة صحيحة! سبق احتساب نقاط هذا التحدي، لذا لن تُضاف نقاط أخرى.';
+    } else {
+      id('bankStatus').textContent='اقرأ التغذية الراجعة، ثم اختر «إعادة المحاولة» أو انتقل إلى التحدي التالي.';
+    }
+  }
+
+  var missions=[
+    {symbol:'▤',title:'مصمم المعرفة',text:'أنشئ بطاقة تعليمية تلخص معلومة جديدة تعلمتها اليوم.',tag:'الإبداع والتصميم'},
+    {symbol:'⌘',title:'مستكشف رقمي',text:'اكتب ثلاث قواعد تساعد على حماية حساباتك وخصوصيتك الرقمية.',tag:'المهارات الرقمية'},
+    {symbol:'⚗',title:'باحث صغير',text:'اكتب سؤالًا علميًا، ثم اقترح تجربة بسيطة وآمنة لاختباره بإشراف المعلم.',tag:'العلوم والاستقصاء'},
+    {symbol:'◇',title:'مفكر ناقد',text:'اختر معلومة متداولة، وتحقق منها بالرجوع إلى مصدرين موثوقين.',tag:'التفكير الناقد'},
+    {symbol:'◎',title:'متحدث واثق',text:'قدّم تعريفًا بنفسك في 30 ثانية، مع صوت واضح وتواصل بصري مناسب.',tag:'التواصل والقيادة'},
+    {symbol:'⌘',title:'مبرمج مبتدئ',text:'صمّم خوارزمية من خمس خطوات لحل مشكلة يومية أو تنظيم مهمة.',tag:'البرمجة والمنطق'}
+  ];
+  var missionIndex=0, missionDone=false;
+  function showMission(){
+    var m=missions[missionIndex];
+    id('missionSymbol').textContent=m.symbol;id('missionTitle').textContent=m.title;
+    id('missionText').textContent=m.text;id('missionTag').textContent=m.tag;
+    id('missionStatus').textContent=missionDone?'أُنجزت هذه المهمة وسُجّل تقدمك. أحسنت!':'اختر مهمة وابدأ التنفيذ، ثم سجّل إنجازك.';
+    id('completeMission').textContent=missionDone?'✓ تم تسجيل الإنجاز':'✓ أنجزت المهمة';
+    id('completeMission').disabled=missionDone;
+  }
+  function updateTasks(){
+    var boxes=Array.prototype.slice.call(document.querySelectorAll('#taskList input[type=checkbox]'));
+    var n=boxes.filter(function(b){return b.checked;}).length;
+    id('progress').style.width=(n/boxes.length*100)+'%';
+    id('progressText').textContent='أنجزت '+n+' من '+boxes.length+' مهمة';
+    try{boxes.forEach(function(b){localStorage.setItem('gifted_final_'+b.id,b.checked?'1':'0');});}catch(e){}
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('button'); if(!b)return;
+    if(b.classList.contains('complete')){var k=b.dataset.id;done[k]=!done[k];updateStats();return;}
+    if(b.classList.contains('filter')){
+      document.querySelectorAll('.filter').forEach(function(x){x.classList.remove('active');});b.classList.add('active');
+      var f=b.dataset.filter;
+      document.querySelectorAll('#programGrid .card').forEach(function(c){c.classList.toggle('hidden',f!=='all'&&c.dataset.cat.split(' ').indexOf(f)===-1);});
+      return;
+    }
+    if(b.classList.contains('age')){
+      document.querySelectorAll('.age').forEach(function(x){x.classList.remove('active');});b.classList.add('active');
+      var age=b.dataset.age;
+      document.querySelectorAll('#programGrid .card').forEach(function(c){c.classList.toggle('hidden',age!=='all'&&c.dataset.age.split(' ').indexOf(age)===-1);});
+      document.querySelectorAll('.filter').forEach(function(x){x.classList.remove('active');});document.querySelector('.filter[data-filter="all"]').classList.add('active');
+      id('ageHint').textContent=age==='young'?'مسار مقترح: أنشطة قصيرة، مرئية، وتجارب مبسطة مع إشراف مناسب.':age==='middle'?'مسار مقترح: مشاريع قصيرة تجمع بين التجربة والتطبيق وتنمية الاستقلالية.':age==='high'?'مسار مقترح: مشاريع أعمق، ومهارات العرض والمقابلات والاستعداد للمستقبل.':'يمكن لكل طالب اختيار النشاط المناسب لمستواه، وليس لعمره فقط.';
+      return;
+    }
+    if(b.closest('#bankChoices')&&b.classList.contains('choice')){handleBankChoice(b);return;}
+    if(b.closest('#quizChoices')&&b.classList.contains('choice')){
+      quizAttempts++;
+      var correct=b.dataset.correct==='true';var fb=id('quizFeedback');
+      fb.textContent=b.dataset.feedback;fb.className='feedback show '+(correct?'good':'try');
+      document.querySelectorAll('#quizChoices .choice').forEach(function(x){x.classList.remove('correct','incorrect');});
+      b.classList.add(correct?'correct':'incorrect');
+      id('quizStatus').textContent=correct?'إجابة صحيحة — حصلت على 5 نقاط!':'ليست الإجابة الأفضل بعد. اقرأ التلميح وحاول مرة أخرى.';
+      if(correct&&!quizCorrect){quizCorrect=true;updateStats();}
+      return;
+    }
+    if(b.id==='tryAgain'){
+      id('quizFeedback').textContent='';id('quizFeedback').className='feedback';
+      document.querySelectorAll('.choice').forEach(function(x){x.classList.remove('correct','incorrect');x.disabled=false;});
+      id('quizStatus').textContent='اختر إجابة واحدة للبدء.';return;
+    }
+
+    if(b.dataset.qfilter){
+      qFilter=b.dataset.qfilter;qIndex=0;
+      document.querySelectorAll('#challengeFilters .filter').forEach(function(x){x.classList.toggle('active',x===b);});
+      renderQuestion();return;
+    }
+    if(b.id==='bankNext'){var list=filteredQuestions();qIndex=(qIndex+1)%list.length;renderQuestion();return;}
+    if(b.id==='bankReset'){id('bankFeedback').textContent='';id('bankFeedback').className='feedback';renderQuestion();return;}
+
+    if(b.id==='newMission'){
+      missionIndex=(missionIndex+1)%missions.length;missionDone=false;showMission();return;
+    }
+    if(b.id==='completeMission'){
+      if(!missionDone){missionDone=true;done['mission-'+missionIndex]=true;updateStats();showMission();}
+      return;
+    }
+    if(b.id==='makeCertificate'){
+      var nm=id('studentName').value.trim();
+      if(!nm){id('studentName').focus();id('certStudentName').textContent='يرجى كتابة اسم الطالب';}
+      else{id('certStudentName').textContent=nm;}
+      id('certStage').textContent=id('studentStage').value.trim()||'المرحلة الدراسية';
+      var now=new Date();id('certDate').textContent='تاريخ الإصدار: '+now.toLocaleDateString('ar-SA');
+      id('certificatePreview').classList.add('show');
+      id('certificatePreview').scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    if(b.id==='printCertificate'){
+      if(!id('certificatePreview').classList.contains('show')){
+        id('makeCertificate').click();return;
+      }
+      window.print();return;
+    }
+    if(b.id==='resetTasks'){
+      if(window.confirm('هل تريد مسح علامات المهام وإعادة تعيين السجل؟')){
+        document.querySelectorAll('#taskList input[type=checkbox]').forEach(function(x){x.checked=false;});
+        try{for(var i=1;i<=14;i++)localStorage.removeItem('gifted_final_t'+i);}catch(e){}
+        updateTasks();
+      }
+    }
+  });
+  document.querySelectorAll('#taskList input[type=checkbox]').forEach(function(b){try{b.checked=localStorage.getItem('gifted_final_'+b.id)==='1';}catch(e){}b.addEventListener('change',updateTasks);});
+  updateStats();updateTasks();renderQuestion();showMission();
+})();
+</script></body></html>
